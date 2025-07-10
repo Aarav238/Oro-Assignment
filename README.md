@@ -44,6 +44,45 @@ A simple REST API to shorten long URLs and redirect short codes to the original 
    ```
    The server will start on `http://localhost:3000`.
 
+## Docker Installation
+
+### Prerequisites
+- Docker
+- Docker Compose
+
+### Using Docker
+1. Clone the repository:
+   ```bash
+   git clone <your-repo-url>
+   cd assignment
+   ```
+2. Build and run with Docker Compose:
+   ```bash
+   docker-compose up --build
+   ```
+   This will:
+   - Build the Node.js application
+   - Start MongoDB container
+   - Start the API server on `http://localhost:3000`
+3. To run in detached mode:
+   ```bash
+   docker-compose up -d
+   ```
+4. To stop the containers:
+   ```bash
+   docker-compose down
+   ```
+
+### Using Docker (without Docker Compose)
+1. Build the Docker image:
+   ```bash
+   docker build -t url-shortener .
+   ```
+2. Run the container (make sure MongoDB is running):
+   ```bash
+   docker run -p 3000:3000 -e MONGO_URI=mongodb://host.docker.internal:27017/urlshortener url-shortener
+   ```
+
 ## API Endpoints
 
 ### 1. Shorten a URL
